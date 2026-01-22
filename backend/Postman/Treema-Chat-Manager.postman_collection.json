@@ -1,0 +1,297 @@
+{
+  "info": {
+    "name": "Treema Chat Manager - Unified Inbox",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{authEmail}}\",\n  \"password\": \"{{authPassword}}\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Me",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/auth/me",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "me"]
+            }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/auth/logout",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "logout"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Conversations",
+      "item": [
+        {
+          "name": "List Conversations",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/conversations",
+              "host": ["{{baseUrl}}"],
+              "path": ["conversations"]
+            }
+          }
+        },
+        {
+          "name": "List Messages",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/conversations/{{conversationId}}/messages",
+              "host": ["{{baseUrl}}"],
+              "path": ["conversations", "{{conversationId}}", "messages"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Webhooks",
+      "item": [
+        {
+          "name": "WhatsApp Webhook",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from\": \"+15551234567\",\n  \"id\": \"wamid-123\",\n  \"text\": \"Hello from WhatsApp\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/webhooks/whatsapp",
+              "host": ["{{baseUrl}}"],
+              "path": ["webhooks", "whatsapp"]
+            }
+          }
+        },
+        {
+          "name": "Telegram Webhook",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": {\n    \"chat\": { \"id\": \"123456\" },\n    \"message_id\": \"987\",\n    \"text\": \"Hello from Telegram\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/webhooks/telegram",
+              "host": ["{{baseUrl}}"],
+              "path": ["webhooks", "telegram"]
+            }
+          }
+        },
+        {
+          "name": "Email Webhook",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from\": \"guest@example.com\",\n  \"messageId\": \"email-123\",\n  \"body\": \"Hello from Email\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/webhooks/email",
+              "host": ["{{baseUrl}}"],
+              "path": ["webhooks", "email"]
+            }
+          }
+        },
+        {
+          "name": "Webchat Webhook",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"visitorId\": \"visitor-001\",\n  \"id\": \"web-123\",\n  \"text\": \"Hello from Webchat\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/webhooks/webchat",
+              "host": ["{{baseUrl}}"],
+              "path": ["webhooks", "webchat"]
+            }
+          }
+        },
+        {
+          "name": "Webchat Webhook - Refund Request (240h)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"visitorId\": \"visitor-001\",\n  \"id\": \"web-124\",\n  \"text\": \"I've been waiting 10 days. This is absolutely unacceptable and terrible service! I want an immediate refund now.\",\n  \"waiting_hours\": 240\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/webhooks/webchat",
+              "host": ["{{baseUrl}}"],
+              "path": ["webhooks", "webchat"]
+            }
+          }
+        },
+        {
+          "name": "Webchat Webhook - Delay Inquiry (2h)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"visitorId\": \"visitor-002\",\n  \"id\": \"web-125\",\n  \"text\": \"Hi, I was just wondering what the standard timeframe is for delivery delays? Mine is a bit late.\",\n  \"waiting_hours\": 2\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/webhooks/webchat",
+              "host": ["{{baseUrl}}"],
+              "path": ["webhooks", "webchat"]
+            }
+          }
+        },
+        {
+          "name": "Webchat Webhook - Praise (0h)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"visitorId\": \"visitor-003\",\n  \"id\": \"web-126\",\n  \"text\": \"The support team was amazing! Thank you for the quick response and helping me with my issue.\",\n  \"waiting_hours\": 0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/webhooks/webchat",
+              "host": ["{{baseUrl}}"],
+              "path": ["webhooks", "webchat"]
+            }
+          }
+        },
+        {
+          "name": "Webchat Webhook - Shipping Feedback (26h)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"visitorId\": \"visitor-004\",\n  \"id\": \"web-127\",\n  \"text\": \"The product is great but the shipping updates are a bit confusing. Hope you can improve this.\",\n  \"waiting_hours\": 26\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/webhooks/webchat",
+              "host": ["{{baseUrl}}"],
+              "path": ["webhooks", "webchat"]
+            }
+          }
+        },
+        {
+          "name": "Webchat Webhook - Status Stuck (72h)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"visitorId\": \"visitor-005\",\n  \"id\": \"web-128\",\n  \"text\": \"My delivery status hasn't moved in 3 days. Can you check if there is a delay?\",\n  \"waiting_hours\": 72\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/webhooks/webchat",
+              "host": ["{{baseUrl}}"],
+              "path": ["webhooks", "webchat"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Telegram Bot API",
+      "item": [
+        {
+          "name": "Get Webhook Info",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "https://api.telegram.org/bot{{telegramBotToken}}/getWebhookInfo",
+              "protocol": "https",
+              "host": ["api", "telegram", "org"],
+              "path": ["bot{{telegramBotToken}}", "getWebhookInfo"]
+            }
+          }
+        },
+        {
+          "name": "Set Webhook",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "https://api.telegram.org/bot{{telegramBotToken}}/setWebhook?url={{telegramWebhookUrl}}",
+              "protocol": "https",
+              "host": ["api", "telegram", "org"],
+              "path": ["bot{{telegramBotToken}}", "setWebhook"],
+              "query": [{ "key": "url", "value": "{{telegramWebhookUrl}}" }]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reply",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"conversationId\": \"{{conversationId}}\",\n  \"text\": \"Reply from operator\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/reply",
+          "host": ["{{baseUrl}}"],
+          "path": ["reply"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "https://chat-manager-unified-inbox-koa-back.vercel.app" },
+    { "key": "frontendUrl", "value": "https://chat-manager-unified-inbox-frontend.vercel.app" },
+    { "key": "aiApiUrl", "value": "https://messages-analysis-reply-suggestion.vercel.app" },
+    { "key": "conversationId", "value": "" },
+    { "key": "authEmail", "value": "username" },
+    { "key": "authPassword", "value": "password" },
+    { "key": "telegramBotToken", "value": "telegram_token" },
+    {
+      "key": "telegramWebhookUrl",
+      "value": "https://chat-manager-unified-inbox-frontend.vercel.app/webhooks/telegram"
+    }
+  ]
+}
