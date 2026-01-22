@@ -2,6 +2,8 @@
 
 Unified inbox for consolidating messages from multiple channels (WhatsApp, Telegram, Email, Web chat). Messages are normalized into a single schema, enriched via the AI analysis API, and displayed in an operator-friendly UI with reply tools.
 
+🔗 **[Demo https://chat-manager-unified-inbox-frontend.vercel.app](https://chat-manager-unified-inbox-frontend.vercel.app)**
+
 ## This is the architecture of Unified inbox system.
 
 First, each channel connects through a **Channel Adapter**.  
