@@ -4,6 +4,8 @@ Unified inbox for consolidating messages from multiple channels (WhatsApp, Teleg
 
 🔗 **[Demo https://chat-manager-unified-inbox-frontend.vercel.app](https://chat-manager-unified-inbox-frontend.vercel.app)**
 
+<img src="img/dashboard.png" alt="Chat Manager Dashboard" />
+
 ## This is the architecture of Unified inbox system.
 
 First, each channel connects through a **Channel Adapter**.  
