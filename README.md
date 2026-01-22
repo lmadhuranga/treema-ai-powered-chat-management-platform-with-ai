@@ -27,7 +27,8 @@ It is designed to clearly separate core messaging data from AI-generated insight
 
 This diagram illustrates the AI processing layer used in the Unified Inbox to enhance operator efficiency through automation, insights, and prioritization.    
 
-![enter image description here](https://raw.githubusercontent.com/lmadhuranga/Todo-App-Koa-NextJs-MongoDb-Typescript/refs/heads/main/ai-system.jpg)
+ 
+<img src="img/ai-system.jpg" alt="Supervisor–Agent based AI processing architecture" />
 
 This diagram represents a Supervisor–Agent based AI processing architecture where multiple AI agents work in parallel and feed a central LLM to produce intelligent outcomes.
 
@@ -75,7 +76,7 @@ It generates final AI-assisted outputs aligned with context, emotion, and urgenc
 The Unified Inbox and AI Processing systems are connected through an **asynchronous Worker (Orchestrator)** module.  
 This module acts as a decoupled bridge between message ingestion and AI computation.
 
-![enter image description here](https://raw.githubusercontent.com/lmadhuranga/Todo-App-Koa-NextJs-MongoDb-Typescript/refs/heads/main/full-system.jpg)
+<img src="img/full-system.jpg" alt="Complete diagrum" />
 
 ### Connection Flow (High-Level)
 
