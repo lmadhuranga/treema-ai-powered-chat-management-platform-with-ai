@@ -34,6 +34,7 @@ Setup
    `GOOGLE_API_KEY=your_key_here`
    `AI_API_KEY=your_api_key_here`
    `LLM_ENABLED=true`
+   `EMBEDDING_MODEL=models/gemini-embedding-001`
 2) Create a virtual environment and install dependencies:
    `uv venv`
    `uv pip install -r requirement.txt`
@@ -101,6 +102,7 @@ Vercel
 2) In Vercel project settings, set environment variables:
    `GOOGLE_API_KEY=your_key_here`
    `AI_API_KEY=your_api_key_here`
+   `EMBEDDING_MODEL=models/gemini-embedding-001`
 3) Deploy the repo in Vercel. The API will be available at:
    `https://<your-app>.vercel.app/analyze`
 Note: Vercel builds skip native vector DBs; the app falls back to a simple
